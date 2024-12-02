@@ -13,6 +13,11 @@ public class Account {
         this.customer = customer;
     }
 
+    public void showInfo() {
+        System.out.println("IBAN: " + iban + ", Saldo " + balance + ", Cliente" + customer.getNif());
+
+    }
+
     public String getIban() {
         return iban;
     }
@@ -52,10 +57,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "iban='" + iban + '\'' +
-                ", balance=" + balance +
-                ", customer=" + customer +
-                '}';
+        return "Account{" + "iban='" + iban + '\'' + ", balance=" + balance + ", customer=" + customer + '}';
     }
 }

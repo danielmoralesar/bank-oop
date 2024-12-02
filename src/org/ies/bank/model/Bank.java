@@ -12,6 +12,47 @@ public class Bank {
         this.accounts = accounts;
     }
 
+    public void showAccounts (){
+        for (Account account : accounts){
+            account.showInfo();
+        }
+    }
+
+    public void findAccount (String iban){
+        for (var account: accounts){
+            if (account.getIban().equals(iban)){
+                account.showInfo();
+            }
+        }
+    }
+
+    public Account returnAccount (String iban){
+        for (var account: accounts){
+            if (account.getIban().equals(iban)){
+                return account;
+            }
+        }
+        return null;
+    }
+
+    public void findCustomersAccounts (String nif){
+        for (var account: accounts){
+            if (account.getCustomer().getNif().equals(nif)){
+                account.showInfo();
+            }
+        }
+    }
+
+    public void depositInAccount (String iban, double money){
+        var account = returnAccount(iban);
+        if (account != null){
+            account.setBalance(account.getBalance() + money);
+        }
+        else {
+            System.out.println("No se encuentra la cuenta");
+        }
+    }
+
     public String getBanksName() {
         return banksName;
     }

@@ -29,7 +29,12 @@ public class BankReader {
 
         Account[] accounts = new Account[countAccounts];
         for (int i = 0; i < countAccounts; i++) {
-            //pendiente hacer bucle
+            accounts[i] = accountReader.read();
         }
+
+        return new Bank(
+          banksName,
+          accounts
+        );
     }
 }

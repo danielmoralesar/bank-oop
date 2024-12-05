@@ -10,11 +10,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
-        var CustomerReader = new CustomerReader(scanner);
-        var AccountReader = new AccountReader(scanner, CustomerReader);
-        var BankReader = new BankReader(scanner, AccountReader);
-        var BankApp = new BankApp(scanner, BankReader);
+        var customerReader = new CustomerReader(scanner);
+        var accountReader = new AccountReader(scanner, customerReader);
+        var bankReader = new BankReader(scanner, accountReader);
+        var bankApp = new BankApp(scanner, bankReader);
 
-        BankApp.run();
+        bankApp.run();
     }
 }

@@ -18,15 +18,7 @@ public class BankApp {
         int option;
 
         do {
-            System.out.println("Elija una operación: ");
-            System.out.println("1. Mostrar las cuentas del banco");
-            System.out.println("2. Mostrar datos de una cuenta");
-            System.out.println("3. Mostrar los datos de las cuentas de un cliente");
-            System.out.println("4. Ingresar dinero en una cuenta");
-            System.out.println("5. Sacar dinero de una cuenta");
-            System.out.println("6. Salir");
-            option = scanner.nextInt();
-            scanner.nextLine();
+            option = chooseOption();
 
             if (option == 1) {
                 bank.showAccounts();
@@ -46,23 +38,21 @@ public class BankApp {
                 System.out.println("Ingrese su número IBAN");
                 String iban = scanner.nextLine();
                 System.out.println("¿Cúanto va a ingresar?");
-                double amount = askAmount("+");
+                double amount = askAmount();
                 bank.deposit(iban, amount);
-            } else if (option == 5){
+            } else if (option == 5) {
                 System.out.println("Ingrese su número IBAN");
                 String iban = scanner.nextLine();
                 System.out.println("¿Cúanto va a retirar?");
-                double amount = askAmount("-");
-                bank.deposit(iban, amount);
-            } else if (option == 6){
-                System.out.println("¡Hasta luego!");
+                double amount = askAmount();
+                bank.deposit(iban, -amount);
             } else {
-                System.out.println("Opción no válida, inténtelo de nuevo");
+                System.out.println("¡Hasta luego!");
             }
         } while (option != 6);
     }
 
-    public double askAmount(String option) {
+    private double askAmount() {
         double amount;
         do {
             amount = scanner.nextDouble();
@@ -71,10 +61,25 @@ public class BankApp {
                 System.out.println("Monto no válido, intentelo de nuevo");
             }
         } while (amount < 0);
-        if (option.equals("+")) {
-            return amount;
-        } else {
-            return (amount - (amount * 2));
-        }
+        return amount;
+    }
+
+    private int chooseOption() {
+        int option;
+        do {
+            System.out.println("Elija una operación: ");
+            System.out.println("1. Mostrar las cuentas del banco");
+            System.out.println("2. Mostrar datos de una cuenta");
+            System.out.println("3. Mostrar los datos de las cuentas de un cliente");
+            System.out.println("4. Ingresar dinero en una cuenta");
+            System.out.println("5. Sacar dinero de una cuenta");
+            System.out.println("6. Salir");
+            option = scanner.nextInt();
+            scanner.nextLine();
+            if (option < 1 || option > 6) {
+                System.out.println("Opción no válida, inténtelo de nuevo");
+            }
+        } while (option < 1 || option > 6);
+        return option;
     }
 }

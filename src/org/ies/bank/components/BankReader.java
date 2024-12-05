@@ -18,10 +18,11 @@ public class BankReader {
         System.out.println("Ingrese el nombre del banco: ");
         String banksName = scanner.nextLine();
 
-        int countAccounts = 0;
+        int countAccounts;
         do{
             System.out.println("¿Cuantas cuentas tiene el banco?");
             countAccounts = scanner.nextInt();
+            scanner.nextLine();
             if (countAccounts < 1){
                 System.out.println("El banco no puede tener menos de una cuenta");
             }

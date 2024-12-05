@@ -14,16 +14,13 @@ public class AccountReader {
         this.customerReader = customerReader;
     }
 
-    public Account read(){
+    public Account read() {
         System.out.println("Ingrese los datos de su cuenta");
-        String iban;
-        do {
-            System.out.println("Ingrese su IBAN: ");
-            iban = scanner.nextLine();
-        } while (iban == null);
-        System.out.println("su IBAN es: " + iban);
+        System.out.println("Ingrese su IBAN: ");
+        String iban = scanner.nextLine();
         System.out.println("Ingrese su saldo actual: ");
         double balance = scanner.nextDouble();
+        scanner.nextLine();
 
         Customer customer = customerReader.read();
 

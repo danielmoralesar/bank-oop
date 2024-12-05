@@ -14,7 +14,7 @@ public class Account {
     }
 
     public void showInfo() {
-        System.out.println("IBAN: " + iban + ", Saldo " + balance + ", Cliente" + customer.getNif());
+        System.out.println("IBAN: " + iban + ", Saldo " + balance + ", Cliente " + customer.getNif());
     }
 
     public void deposit(double amount){

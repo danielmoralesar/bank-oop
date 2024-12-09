@@ -46,10 +46,23 @@ public class BankApp {
                 System.out.println("¿Cúanto va a retirar?");
                 double amount = askAmount();
                 bank.deposit(iban, -amount);
+            } else if (option == 6) {
+                System.out.println("Ingrese su NIF");
+                String nif = scanner.nextLine();
+                int numbers = bank.countAccounts(nif);
+                if (numbers < 1) {
+                    System.out.println("No existen cuentas con este NIF");
+                } else {
+                    System.out.println("Este cliente posee " + numbers + " cuentas");
+                }
+            } else if (option == 7) {
+                System.out.println("Ingrese su número IBAN");
+                String iban = scanner.nextLine();
+                bank.showCustomer(iban);
             } else {
                 System.out.println("¡Hasta luego!");
             }
-        } while (option != 6);
+        } while (option != 8);
     }
 
     private double askAmount() {
@@ -73,13 +86,15 @@ public class BankApp {
             System.out.println("3. Mostrar los datos de las cuentas de un cliente");
             System.out.println("4. Ingresar dinero en una cuenta");
             System.out.println("5. Sacar dinero de una cuenta");
-            System.out.println("6. Salir");
+            System.out.println("6. Contar cuentas de un cliente");
+            System.out.println("7. Mostrar titular de cuenta");
+            System.out.println("8. Salir");
             option = scanner.nextInt();
             scanner.nextLine();
-            if (option < 1 || option > 6) {
+            if (option < 1 || option > 8) {
                 System.out.println("Opción no válida, inténtelo de nuevo");
             }
-        } while (option < 1 || option > 6);
+        } while (option < 1 || option > 8);
         return option;
     }
 }

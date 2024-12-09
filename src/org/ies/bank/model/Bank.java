@@ -83,6 +83,15 @@ public class Bank {
         return null;
     }
 
+    public void showCustomer(String iban) {
+        var customer = findCustomer(iban);
+        if (customer != null) {
+            customer.showCustomer();
+        } else {
+            System.out.println("Este número IBAN es inválido");
+        }
+    }
+
     public String getBanksName() {
         return banksName;
     }

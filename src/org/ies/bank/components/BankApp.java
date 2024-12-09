@@ -1,5 +1,8 @@
 package org.ies.bank.components;
 
+import org.ies.bank.model.Account;
+
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class BankApp {
@@ -45,24 +48,34 @@ public class BankApp {
                 String iban = scanner.nextLine();
                 System.out.println("¿Cúanto va a retirar?");
                 double amount = askAmount();
-                bank.deposit(iban, -amount);
+                bank.withdraw(iban, amount);
             } else if (option == 6) {
                 System.out.println("Ingrese su NIF");
                 String nif = scanner.nextLine();
-                int numbers = bank.countAccounts(nif);
-                if (numbers < 1) {
+                int accounts = bank.countAccounts(nif);
+                if (accounts < 1) {
                     System.out.println("No existen cuentas con este NIF");
                 } else {
-                    System.out.println("Este cliente posee " + numbers + " cuentas");
+                    System.out.println("Este cliente posee " + accounts + " cuentas");
                 }
             } else if (option == 7) {
                 System.out.println("Ingrese su número IBAN");
                 String iban = scanner.nextLine();
                 bank.showCustomer(iban);
+            } else if (option == 8) {
+                System.out.println("Ingrese el IBAN de la cuenta origen");
+                String ibanFrom = scanner.nextLine();
+                Account origin = bank.findAccountViaIban(ibanFrom);
+                System.out.println("Ingrese el IBAN de la cuenta destino");
+                String toIban = scanner.nextLine();
+                Account destination = bank.findAccountViaIban(toIban);
+                System.out.println("¿Cúanto va a transferir?");
+                double amount = askAmount();
+                bank.transfer(origin, destination, amount);
             } else {
                 System.out.println("¡Hasta luego!");
             }
-        } while (option != 8);
+        } while (option != 9);
     }
 
     private double askAmount() {
@@ -88,13 +101,14 @@ public class BankApp {
             System.out.println("5. Sacar dinero de una cuenta");
             System.out.println("6. Contar cuentas de un cliente");
             System.out.println("7. Mostrar titular de cuenta");
-            System.out.println("8. Salir");
+            System.out.println("8. Hacer una transferencia");
+            System.out.println("9. Salir");
             option = scanner.nextInt();
             scanner.nextLine();
-            if (option < 1 || option > 8) {
+            if (option < 1 || option > 9) {
                 System.out.println("Opción no válida, inténtelo de nuevo");
             }
-        } while (option < 1 || option > 8);
+        } while (option < 1 || option > 9);
         return option;
     }
 }

@@ -54,6 +54,20 @@ public class Bank {
         }
     }
 
+    public void withdraw(String iban, double amount) {
+        var account = findAccountViaIban(iban);
+        if (account != null) {
+            if (account.getBalance() >= amount) {
+                account.deposit(-amount);
+                showAccount(iban);
+            } else {
+                System.out.println("La cuenta no tiene fondos suficientes");
+            }
+        } else {
+            System.out.println("No se encuentra la cuenta");
+        }
+    }
+
     public void deposit(String iban, double amount) {
         var account = findAccountViaIban(iban);
         if (account != null) {
@@ -61,6 +75,23 @@ public class Bank {
             showAccount(iban);
         } else {
             System.out.println("No se encuentra la cuenta");
+        }
+    }
+
+    public void transfer(Account origin, Account destination, double amount) {
+        if (origin != null && destination != null && origin.getBalance() >= amount && origin != destination) {
+            withdraw(origin.getIban(), amount);
+            deposit(destination.getIban(), amount);
+            System.out.println("Transferencia realizada con exito");
+        } else {
+            System.out.println("No se ha podido hacer la transferencia debido a: ");
+            if (origin == null || destination == null) {
+                System.out.println("IBAN incorrecto de alguna de las dos cuentas");
+            } else if (origin.getBalance() < amount) {
+                System.out.println("Saldo insuficiente");
+            } else if (origin == destination) {
+                System.out.println("Ambas cuentas son la misma.");
+            }
         }
     }
 

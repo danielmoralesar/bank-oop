@@ -9,28 +9,30 @@ public class BankApp2 {
         this.bankReader = bankReader;
     }
 
-    public void run(){
+    public void run() {
         var bank = bankReader.read();
 
-        String iban1 = "ES0001";
-        Account firstAccount = bank.findAccountViaIban(iban1);
-        if (firstAccount != null){
-            bank.deposit(iban1, 500);
+        Account firstAccount = bank.findAccountViaIban("ES0001");
+        if (firstAccount != null) {
+            firstAccount.deposit(500);
         } else {
             System.out.println("La cuenta no existe");
         }
 
-        String iban2 = "ES0002";
-        Account secondAccount = bank.findAccountViaIban(iban2);
-        if (secondAccount != null){
-            bank.withdraw(iban2, 30);
+        Account secondAccount = bank.findAccountViaIban("ES0002");
+        if (secondAccount != null) {
+            secondAccount.deposit(-30);
         } else {
             System.out.println("La cuenta no existe");
         }
 
-        bank.showAccount(iban1);
-        bank.showAccount(iban2);
+        if (firstAccount != null) {
+            bank.showAccount(firstAccount.getIban());
+        }
+        if (secondAccount != null) {
+            bank.showAccount(secondAccount.getIban());
+        }
 
-        bank.transfer(firstAccount, secondAccount, 500);
+        bank.transfer("ES0001", "ES0002", 500);
     }
 }

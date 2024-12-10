@@ -78,10 +78,12 @@ public class Bank {
         }
     }
 
-    public void transfer(Account origin, Account destination, double amount) {
+    public void transfer(String originIban, String destinationIban, double amount) {
+        Account origin = findAccountViaIban(originIban);
+        Account destination = findAccountViaIban(destinationIban);
         if (origin != null && destination != null && origin.getBalance() >= amount && origin != destination) {
-            withdraw(origin.getIban(), amount);
-            deposit(destination.getIban(), amount);
+            origin.deposit(-amount);
+            destination.deposit(amount);
             System.out.println("Transferencia realizada con exito");
         } else {
             System.out.println("No se ha podido hacer la transferencia debido a: ");

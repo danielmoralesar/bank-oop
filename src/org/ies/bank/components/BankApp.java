@@ -2,7 +2,6 @@ package org.ies.bank.components;
 
 import org.ies.bank.model.Account;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class BankApp {
@@ -64,11 +63,9 @@ public class BankApp {
                 bank.showCustomer(iban);
             } else if (option == 8) {
                 System.out.println("Ingrese el IBAN de la cuenta origen");
-                String ibanFrom = scanner.nextLine();
-                Account origin = bank.findAccountViaIban(ibanFrom);
+                String origin = scanner.nextLine();
                 System.out.println("Ingrese el IBAN de la cuenta destino");
-                String toIban = scanner.nextLine();
-                Account destination = bank.findAccountViaIban(toIban);
+                String destination = scanner.nextLine();
                 System.out.println("¿Cúanto va a transferir?");
                 double amount = askAmount();
                 bank.transfer(origin, destination, amount);

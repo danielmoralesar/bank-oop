@@ -1,7 +1,5 @@
 package org.ies.bank.components;
 
-import org.ies.bank.model.Account;
-
 import java.util.Scanner;
 
 public class BankApp {

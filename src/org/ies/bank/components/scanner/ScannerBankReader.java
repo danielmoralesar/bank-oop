@@ -1,17 +1,17 @@
-package org.ies.bank.components;
+package org.ies.bank.components.scanner;
 
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
 import java.util.Scanner;
 
-public class BankReader {
+public class ScannerBankReader {
     private final Scanner scanner;
-    private final AccountReader accountReader;
+    private final ScannerAccountReader scannerAccountReader;
 
-    public BankReader(Scanner scanner, AccountReader accountReader) {
+    public ScannerBankReader(Scanner scanner, ScannerAccountReader scannerAccountReader) {
         this.scanner = scanner;
-        this.accountReader = accountReader;
+        this.scannerAccountReader = scannerAccountReader;
     }
 
     public Bank read(){
@@ -30,7 +30,7 @@ public class BankReader {
 
         Account[] accounts = new Account[countAccounts];
         for (int i = 0; i < countAccounts; i++) {
-            accounts[i] = accountReader.read();
+            accounts[i] = scannerAccountReader.read();
         }
 
         return new Bank(

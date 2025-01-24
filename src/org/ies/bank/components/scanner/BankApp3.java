@@ -1,14 +1,14 @@
-package org.ies.bank.components;
+package org.ies.bank.components.scanner;
 
 public class BankApp3 {
-    private final BankReader bankReader;
+    private final ScannerBankReader scannerBankReader;
 
-    public BankApp3(BankReader bankReader) {
-        this.bankReader = bankReader;
+    public BankApp3(ScannerBankReader scannerBankReader) {
+        this.scannerBankReader = scannerBankReader;
     }
 
     public void run() {
-        var bank = bankReader.read();
+        var bank = scannerBankReader.read();
 
         bank.showAccounts();
         bank.withdraw("ES0003", 50.00);

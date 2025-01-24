@@ -1,13 +1,13 @@
-package org.ies.bank.components;
+package org.ies.bank.components.scanner;
 
 import org.ies.bank.model.Customer;
 
 import java.util.Scanner;
 
-public class CustomerReader {
+public class ScannerCustomerReader {
     private final Scanner scanner;
 
-    public CustomerReader(Scanner scanner) {
+    public ScannerCustomerReader(Scanner scanner) {
         this.scanner = scanner;
     }
 

@@ -1,19 +1,21 @@
-package org.ies.bank.components.scanner;
+package org.ies.bank.components.app;
+
+import org.ies.bank.components.readers.BankReader;
 
 import java.util.Scanner;
 
 public class BankApp {
     private final Scanner scanner;
-    private final ScannerBankReader scannerBankReader;
+    private final BankReader bankReader;
 
-    public BankApp(Scanner scanner, ScannerBankReader scannerBankReader) {
+    public BankApp(Scanner scanner, BankReader bankReader) {
         this.scanner = scanner;
-        this.scannerBankReader = scannerBankReader;
+        this.bankReader = bankReader;
     }
 
     public void run() {
         System.out.println("Ingrese los datos del banco: ");
-        var bank = scannerBankReader.read();
+        var bank = bankReader.read();
 
         int option;
 

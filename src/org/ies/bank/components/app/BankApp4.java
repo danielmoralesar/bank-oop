@@ -1,14 +1,16 @@
-package org.ies.bank.components.scanner;
+package org.ies.bank.components.app;
+
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
 
 public class BankApp4 {
-    private final ScannerBankReader scannerBankReader;
+    private final ScannerBankReader bankReader;
 
-    public BankApp4(ScannerBankReader scannerBankReader) {
-        this.scannerBankReader = scannerBankReader;
+    public BankApp4(ScannerBankReader bankReader) {
+        this.bankReader = bankReader;
     }
 
     public void run() {
-        var bank = scannerBankReader.read();
+        var bank = bankReader.read();
 
         var account = bank.findAccountViaIban("ES0001");
         if (account == null) {

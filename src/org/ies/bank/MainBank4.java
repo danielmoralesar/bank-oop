@@ -1,9 +1,9 @@
 package org.ies.bank;
 
-import org.ies.bank.components.scanner.ScannerAccountReader;
-import org.ies.bank.components.scanner.BankApp4;
-import org.ies.bank.components.scanner.ScannerBankReader;
-import org.ies.bank.components.scanner.ScannerCustomerReader;
+import org.ies.bank.components.readers.scanner.ScannerAccountReader;
+import org.ies.bank.components.app.BankApp4;
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
+import org.ies.bank.components.readers.scanner.ScannerCustomerReader;
 
 import java.util.Scanner;
 

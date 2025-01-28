@@ -1,11 +1,12 @@
-package org.ies.bank.components.scanner;
+package org.ies.bank.components.readers.scanner;
 
+import org.ies.bank.components.readers.BankReader;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
 import java.util.Scanner;
 
-public class ScannerBankReader {
+public class ScannerBankReader implements BankReader {
     private final Scanner scanner;
     private final ScannerAccountReader scannerAccountReader;
 
@@ -14,6 +15,7 @@ public class ScannerBankReader {
         this.scannerAccountReader = scannerAccountReader;
     }
 
+    @Override
     public Bank read(){
         System.out.println("Ingrese el nombre del banco: ");
         String banksName = scanner.nextLine();

@@ -1,16 +1,18 @@
-package org.ies.bank.components.scanner;
+package org.ies.bank.components.readers.scanner;
 
+import org.ies.bank.components.readers.CustomerReader;
 import org.ies.bank.model.Customer;
 
 import java.util.Scanner;
 
-public class ScannerCustomerReader {
+public class ScannerCustomerReader implements CustomerReader {
     private final Scanner scanner;
 
     public ScannerCustomerReader(Scanner scanner) {
         this.scanner = scanner;
     }
 
+    @Override
     public Customer read(){
         System.out.println("Ingrese sus datos personales: ");
         System.out.println("Ingrese su NIF: ");

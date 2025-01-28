@@ -1,12 +1,12 @@
 package org.ies.bank.components.app;
 
-import org.ies.bank.components.readers.scanner.ScannerBankReader;
+import org.ies.bank.components.readers.BankReader;
 import org.ies.bank.model.Account;
 
 public class BankApp2 {
-    private final ScannerBankReader bankReader;
+    private final BankReader bankReader;
 
-    public BankApp2(ScannerBankReader bankReader) {
+    public BankApp2(BankReader bankReader) {
         this.bankReader = bankReader;
     }
 

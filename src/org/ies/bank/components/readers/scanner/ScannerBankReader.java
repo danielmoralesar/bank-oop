@@ -1,5 +1,6 @@
 package org.ies.bank.components.readers.scanner;
 
+import org.ies.bank.components.readers.AccountReader;
 import org.ies.bank.components.readers.BankReader;
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
@@ -8,11 +9,11 @@ import java.util.Scanner;
 
 public class ScannerBankReader implements BankReader {
     private final Scanner scanner;
-    private final ScannerAccountReader scannerAccountReader;
+    private final AccountReader accountReader;
 
-    public ScannerBankReader(Scanner scanner, ScannerAccountReader scannerAccountReader) {
+    public ScannerBankReader(Scanner scanner, AccountReader accountReader) {
         this.scanner = scanner;
-        this.scannerAccountReader = scannerAccountReader;
+        this.accountReader = accountReader;
     }
 
     @Override
@@ -32,7 +33,7 @@ public class ScannerBankReader implements BankReader {
 
         Account[] accounts = new Account[countAccounts];
         for (int i = 0; i < countAccounts; i++) {
-            accounts[i] = scannerAccountReader.read();
+            accounts[i] = accountReader.read();
         }
 
         return new Bank(

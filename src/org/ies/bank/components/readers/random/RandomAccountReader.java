@@ -19,7 +19,7 @@ public class RandomAccountReader implements AccountReader {
     public Account read() {
         return new Account(
                 "ES" + random.nextLong(1000000000L),
-                random.nextDouble(100000000),
+                random.nextDouble(100000),
                 customerReader.read()
         );
     }
